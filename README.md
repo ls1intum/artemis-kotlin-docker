@@ -7,7 +7,10 @@ Build image for Kotlin programming exercises in [Artemis](https://github.com/ls1
 - [detekt](https://detekt.dev/) 1.23.8 as `detekt`, the static code analysis tool. Artemis reads its SARIF report.
 
 Keep `artemis-kotlin-template/pom.xml` in sync with `src/main/resources/templates/kotlin/test/maven/projectTemplate/pom.xml` of Artemis when
-the versions of Kotlin, Ares or the Maven plugins change.
+the versions of Kotlin, Ares, Guava or the Maven plugins change. Artemis enforces this: `supporting_scripts/check_exercise_image_sync.py`
+compares the template with this file at the tag configured in `application.yml` on every pull request, and a nightly run builds the Kotlin
+exercise templates in the published image without network access (`supporting_scripts/verify_exercise_images_offline.py`). After a change here,
+publish a new tag and set it in `application.yml`.
 
 ### Build locally
 
